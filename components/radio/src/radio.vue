@@ -28,24 +28,45 @@
   </label>
 </template>
 <script>
+import Emitter from '~/mixins/emitter';
 export default {
   name: 'SdRadio',
+  componentName: '',
+  mixins: [Emitter],
   props: {
     label: {},
     disabled: Boolean,
     value: {}
   },
   computed: {
+    isGroup () {
+      let parent = this.$parent;
+      let matched = false;
+      while (parent) {
+        if (parent.$options.componentName !== 'SdRadioGroup') {
+          parent = parent.$parent;
+        } else {
+          this._radioGroup = parent;
+          matched = true;
+          return;
+        }
+      }
+      return matched;
+    },
     model: {
       get () {
-        return this.value;
+        return this.isGroup ? this._radioGroup.value : this.value;
       },
       set (val) {
-        this.$emit('input', val);
+        if (this.isGroup) {
+          this.dispatch('SdRadioGroup', 'input', [val]);
+        } else {
+          this.$emit('input', val);
+        }
       }
     },
     isDisabled () {
-      return this.disabled;
+      return this.isGroup ? (this._radioGroup.disabled || this.disabled) : this.disabled;
     },
     isChecked () {
       return this.label === this.model;
