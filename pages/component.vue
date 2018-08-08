@@ -6,8 +6,10 @@
     </el-card>
     <el-card>
       <h2>单选组件</h2>
-      <sd-radio v-model="radio" label="hello" @change="handleRadioChange"></sd-radio>
-      <sd-radio v-model="radio" label="shen" @change="handleRadioChange"></sd-radio>
+      <sd-radio-group @change="handleRadioChange" v-model="radio">
+        <sd-radio label="hello"></sd-radio>
+        <sd-radio label="shen"></sd-radio>
+      </sd-radio-group>
       <br>
       选择值：{{radio}}
     </el-card>

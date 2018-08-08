@@ -54,9 +54,6 @@ module.exports = {
       splitChunks: {
         name: true
       }
-    },
-    extend (config, ctx) {
-      if (ctx.isClient) config.devtool = 'source-map';
     }
   }
 };

@@ -41,17 +41,15 @@ export default {
   computed: {
     isGroup () {
       let parent = this.$parent;
-      let matched = false;
       while (parent) {
         if (parent.$options.componentName !== 'SdRadioGroup') {
           parent = parent.$parent;
         } else {
           this._radioGroup = parent;
-          matched = true;
-          return;
+          return true;
         }
       }
-      return matched;
+      return false;
     },
     model: {
       get () {
@@ -81,6 +79,7 @@ export default {
     handleChange () {
       this.$nextTick(function () {
         this.$emit('change', this.model);
+        this.isGroup && this.dispatch('SdRadioGroup', 'change', this.model);
       });
     }
   }
