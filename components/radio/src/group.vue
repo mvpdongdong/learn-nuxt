@@ -10,6 +10,11 @@ export default {
   props: {
     value: {},
     disabled: Boolean
+  },
+  provide () {
+    return {
+      radioGroup: this
+    };
   }
 };
 </script>

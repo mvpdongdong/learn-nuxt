@@ -6,7 +6,9 @@
     </el-card>
     <el-card>
       <h2>单选组件</h2>
-      <sd-radio-group @change="handleRadioChange" v-model="radio">
+      <sd-radio @change="handleRadioChange" v-model="radio" label="hello"></sd-radio>
+      <sd-radio @change="handleRadioChange" v-model="radio" label="shen"></sd-radio>
+      <sd-radio-group @change="handleRadioChange" v-model="radioGroup">
         <sd-radio label="hello"></sd-radio>
         <sd-radio label="shen"></sd-radio>
       </sd-radio-group>
@@ -49,6 +51,7 @@ export default {
   data () {
     return {
       radio: 'hello',
+      radioGroup: 'hello',
       checkbox: ['hello'],
       switchValue: 100
     };

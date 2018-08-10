@@ -33,6 +33,12 @@ export default {
   name: 'SdRadio',
   componentName: '',
   mixins: [Emitter],
+  inject: {
+    radioGroup: {
+      from: 'radioGroup',
+      default: null
+    }
+  },
   props: {
     label: {},
     disabled: Boolean,
@@ -53,10 +59,10 @@ export default {
     },
     model: {
       get () {
-        return this.isGroup ? this._radioGroup.value : this.value;
+        return this.radioGroup ? this.radioGroup.value : this.value;
       },
       set (val) {
-        if (this.isGroup) {
+        if (this.radioGroup) {
           this.dispatch('SdRadioGroup', 'input', [val]);
         } else {
           this.$emit('input', val);
@@ -64,7 +70,7 @@ export default {
       }
     },
     isDisabled () {
-      return this.isGroup ? (this._radioGroup.disabled || this.disabled) : this.disabled;
+      return this.radioGroup ? (this.radioGroup.disabled || this.disabled) : this.disabled;
     },
     isChecked () {
       return this.label === this.model;
@@ -79,7 +85,8 @@ export default {
     handleChange () {
       this.$nextTick(function () {
         this.$emit('change', this.model);
-        this.isGroup && this.dispatch('SdRadioGroup', 'change', this.model);
+        // this.radioGroup && this.dispatch('SdRadioGroup', 'change', this.model);
+        this.radioGroup && this.radioGroup.$emit('change', this.model);
       });
     }
   }
