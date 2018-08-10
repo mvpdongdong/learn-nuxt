@@ -43,6 +43,11 @@
     </el-card>
     <el-card>
       <h2>select组件</h2>
+      <sd-select @change="handleSelectChange" v-model="select">
+        <sd-option value="1" label="hello"></sd-option>
+        <sd-option value="2" label="shen"></sd-option>
+      </sd-select>
+      选择值：{{select}}
     </el-card>
   </section>
 </template>
@@ -59,7 +64,8 @@ export default {
       radioGroup: 'hello',
       checkbox: ['hello'],
       checkboxGroup: ['hello'],
-      switchValue: 100
+      switchValue: 100,
+      select: '1'
     };
   },
   methods: {
@@ -70,6 +76,9 @@ export default {
       console.log(val);
     },
     handleCheckboxChange (val) {
+      console.log(val);
+    },
+    handleSelectChange (val) {
       console.log(val);
     }
   }
