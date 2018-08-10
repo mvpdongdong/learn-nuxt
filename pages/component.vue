@@ -20,6 +20,11 @@
       <sd-checkbox v-model="checkbox" label="hello" @change="handleCheckboxChange"></sd-checkbox>
       <sd-checkbox v-model="checkbox" label="shen" @change="handleCheckboxChange"></sd-checkbox>
       <sd-checkbox v-model="checkbox" label="dong" @change="handleCheckboxChange"></sd-checkbox>
+      <sd-checkbox-group v-model="checkboxGroup" @change="handleCheckboxChange">
+        <sd-checkbox label="hello"></sd-checkbox>
+        <sd-checkbox label="shen"></sd-checkbox>
+        <sd-checkbox label="dong"></sd-checkbox>
+      </sd-checkbox-group>
       <br>
       选择值：{{checkbox}}
     </el-card>
@@ -53,6 +58,7 @@ export default {
       radio: 'hello',
       radioGroup: 'hello',
       checkbox: ['hello'],
+      checkboxGroup: ['hello'],
       switchValue: 100
     };
   },

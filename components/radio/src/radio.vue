@@ -28,14 +28,11 @@
   </label>
 </template>
 <script>
-import Emitter from '~/mixins/emitter';
 export default {
   name: 'SdRadio',
   componentName: '',
-  mixins: [Emitter],
   inject: {
     radioGroup: {
-      from: 'radioGroup',
       default: null
     }
   },
@@ -45,25 +42,13 @@ export default {
     value: {}
   },
   computed: {
-    isGroup () {
-      let parent = this.$parent;
-      while (parent) {
-        if (parent.$options.componentName !== 'SdRadioGroup') {
-          parent = parent.$parent;
-        } else {
-          this._radioGroup = parent;
-          return true;
-        }
-      }
-      return false;
-    },
     model: {
       get () {
         return this.radioGroup ? this.radioGroup.value : this.value;
       },
       set (val) {
         if (this.radioGroup) {
-          this.dispatch('SdRadioGroup', 'input', [val]);
+          this.radioGroup.$emit('input', val);
         } else {
           this.$emit('input', val);
         }
@@ -85,7 +70,6 @@ export default {
     handleChange () {
       this.$nextTick(function () {
         this.$emit('change', this.model);
-        // this.radioGroup && this.dispatch('SdRadioGroup', 'change', this.model);
         this.radioGroup && this.radioGroup.$emit('change', this.model);
       });
     }

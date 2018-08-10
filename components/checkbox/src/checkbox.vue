@@ -30,6 +30,12 @@
 <script>
 export default {
   name: 'SdCheckbox',
+  componentName: 'SdCheckbox',
+  inject: {
+    checkboxGroup: {
+      default: null
+    }
+  },
   props: {
     label: {},
     value: {},
@@ -38,14 +44,15 @@ export default {
   computed: {
     model: {
       get () {
-        return this.value;
+        return this.checkboxGroup ? this.checkboxGroup.value : this.value;
       },
       set (val) {
         this.$emit('input', val);
+        this.checkboxGroup && this.checkboxGroup.$emit('input', val);
       }
     },
     isDisabled () {
-      return this.disabled;
+      return (this.checkboxGroup && this.checkboxGroup.disabled) || this.disabled;
     },
     isChecked () {
       return this.model.indexOf(this.label) !== -1;
@@ -60,6 +67,7 @@ export default {
     handleChange () {
       this.$nextTick(function () {
         this.$emit('change', this.model);
+        this.checkboxGroup && this.checkboxGroup.$emit('change', this.model);
       });
     }
   }
