@@ -6,6 +6,8 @@ import Switch from '~/components/switch/index.js';
 import RadioGroup from '~/components/radio/src/group';
 import CheckboxGroup from '~/components/checkbox/src/group';
 import {Select, Option} from '~/components/select';
+import Tabs from '~/components/tabs/tabs';
+import TabPane from '~/components/tabs/tab-pane';
 
 Vue.use(Radio);
 Vue.use(Checkbox);
@@ -14,4 +16,6 @@ Vue.use(Select);
 Vue.use(Option);
 Vue.component(RadioGroup.name, RadioGroup);
 Vue.component(CheckboxGroup.name, CheckboxGroup);
+Vue.component(Tabs.name, Tabs);
+Vue.component(TabPane.name, TabPane);
 Vue.prototype.$message = Message;

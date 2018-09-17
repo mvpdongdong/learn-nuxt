@@ -49,6 +49,14 @@
       </sd-select>
       选择值：{{select}}
     </el-card>
+    <el-card>
+      <h2>tabs组件</h2>
+      <sd-tabs v-model="tabs">
+        <sd-tab-pane name="hello" label="tab1"><div style="color:red">pane1</div></sd-tab-pane>
+        <sd-tab-pane name="world" label="tab2">pane2</sd-tab-pane>
+      </sd-tabs>
+      选择值：{{tabs}}
+    </el-card>
   </section>
 </template>
 <script>
@@ -65,7 +73,8 @@ export default {
       checkbox: ['hello'],
       checkboxGroup: ['hello'],
       switchValue: 100,
-      select: '1'
+      select: '1',
+      tabs: 'world'
     };
   },
   methods: {
