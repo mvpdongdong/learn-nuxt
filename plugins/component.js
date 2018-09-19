@@ -8,6 +8,8 @@ import CheckboxGroup from '~/components/checkbox/src/group';
 import {Select, Option} from '~/components/select';
 import Tabs from '~/components/tabs/tabs';
 import TabPane from '~/components/tabs/tab-pane';
+import Table from '~/components/table/table';
+import Column from '~/components/table/column';
 
 Vue.use(Radio);
 Vue.use(Checkbox);
@@ -18,4 +20,6 @@ Vue.component(RadioGroup.name, RadioGroup);
 Vue.component(CheckboxGroup.name, CheckboxGroup);
 Vue.component(Tabs.name, Tabs);
 Vue.component(TabPane.name, TabPane);
+Vue.component(Table.name, Table);
+Vue.component(Column.name, Column);
 Vue.prototype.$message = Message;

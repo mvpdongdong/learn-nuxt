@@ -22,7 +22,7 @@ export default {
       show: false
     };
   },
-  mounted () {
+  created () {
     this.$parent.addPane(this);
   }
 };

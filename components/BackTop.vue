@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .CornerButtons {
   position: fixed;
   bottom: 0;

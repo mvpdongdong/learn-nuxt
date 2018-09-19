@@ -57,6 +57,14 @@
       </sd-tabs>
       选择值：{{tabs}}
     </el-card>
+    <el-card>
+      <h2>table组件</h2>
+      <sd-table :list="tableList">
+        <sd-table-column prop="hello" label="column1"></sd-table-column>
+        <sd-table-column prop="world" label="column2"></sd-table-column>
+      </sd-table>
+      <button @click="addTableData">add data</button>
+    </el-card>
   </section>
 </template>
 <script>
@@ -74,7 +82,11 @@ export default {
       checkboxGroup: ['hello'],
       switchValue: 100,
       select: '1',
-      tabs: 'world'
+      tabs: 'world',
+      tableList: [
+        {hello: '1', world: '2'},
+        {hello: '3', world: '4'}
+      ]
     };
   },
   methods: {
@@ -89,6 +101,10 @@ export default {
     },
     handleSelectChange (val) {
       console.log(val);
+    },
+    addTableData () {
+      let random = Math.ceil(Math.random(0, 1) * 10);
+      this.tableList = this.tableList.concat({hello: random, world: random + 1});
     }
   }
 };
