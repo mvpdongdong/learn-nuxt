@@ -41,6 +41,9 @@
         <mu-list-item button @click="toTab('nodes')">
           <mu-list-item-title>节点</mu-list-item-title>
         </mu-list-item>
+        <mu-list-item button @click="toComponent()">
+          <mu-list-item-title>组件示例</mu-list-item-title>
+        </mu-list-item>
       </mu-list>
     </mu-drawer>
     <nuxt keep-alive />
@@ -53,28 +56,32 @@ export default {
     return {
       open: false,
       docked: false
-    }
+    };
   },
   methods: {
     toggle () {
-      this.open = !this.open
+      this.open = !this.open;
     },
     toHome () {
-      this.$router.push('/m')
-      this.toggle()
+      this.$router.push('/m');
+      this.toggle();
     },
     toNew () {
-      this.$router.push('/m/new')
-      this.toggle()
+      this.$router.push('/m/new');
+      this.toggle();
     },
     toNode (name) {
-      this.$router.push(`/m/node/${name}`)
-      this.toggle()
+      this.$router.push(`/m/node/${name}`);
+      this.toggle();
     },
     toTab (name) {
-      this.$router.push(`/m/tab/${name}`)
-      this.toggle()
+      this.$router.push(`/m/tab/${name}`);
+      this.toggle();
+    },
+    toComponent () {
+      this.$router.push(`/m/component`);
+      this.toggle();
     }
   }
-}
+};
 </script>
