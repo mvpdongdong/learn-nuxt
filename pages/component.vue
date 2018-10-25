@@ -84,8 +84,8 @@ export default {
       select: '1',
       tabs: 'world',
       tableList: [
-        {hello: '1', world: '2'},
-        {hello: '3', world: '4'}
+        { hello: '1', world: '2' },
+        { hello: '3', world: '4' }
       ]
     };
   },
@@ -104,7 +104,7 @@ export default {
     },
     addTableData () {
       let random = Math.ceil(Math.random(0, 1) * 10);
-      this.tableList = this.tableList.concat({hello: random, world: random + 1});
+      this.tableList = this.tableList.concat({ hello: random, world: random + 1 });
     }
   }
 };
