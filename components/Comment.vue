@@ -32,8 +32,8 @@ export default {
   },
   methods: {
     toMember (name) {
-      this.$router.push(`/member/${name}`)
+      this.$router.push(`/member/${name}`);
     }
   }
-}
+};
 </script>

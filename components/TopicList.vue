@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { timeAgo } from '../plugins/filters'
+import { timeAgo } from '../plugins/filters';
 
 export default {
   props: {
@@ -40,11 +40,11 @@ export default {
   },
   methods: {
     toNode (name) {
-      this.$router.push(`/m/node/${name}`)
+      this.$router.push(`/m/node/${name}`);
     },
     getSubTitle (item) {
-      return `by ${item.member.username} • ${timeAgo(item.created)}`
+      return `by ${item.member.username} • ${timeAgo(item.created)}`;
     }
   }
-}
+};
 </script>
