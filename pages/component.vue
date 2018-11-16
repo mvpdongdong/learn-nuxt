@@ -13,7 +13,7 @@
         <sd-radio label="shen"></sd-radio>
       </sd-radio-group>
       <br>
-      选择值：{{radio}}
+      选择值：{{radioGroup}}
     </el-card>
     <el-card>
       <h2>多选框组件</h2>

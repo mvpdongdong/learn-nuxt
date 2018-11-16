@@ -21,7 +21,8 @@
         v-model="model"
         @change="handleChange"
       >
-    </span><span class="sd-checkbox__label">
+    </span>
+    <span class="sd-checkbox__label">
       <slot></slot>
       <template v-if="!$slots.default">{{label}}</template>
     </span>
@@ -65,10 +66,8 @@ export default {
   },
   methods: {
     handleChange () {
-      this.$nextTick(function () {
-        this.$emit('change', this.model);
-        this.checkboxGroup && this.checkboxGroup.$emit('change', this.model);
-      });
+      this.$emit('change', this.model);
+      this.checkboxGroup && this.checkboxGroup.$emit('change', this.model);
     }
   }
 };

@@ -21,7 +21,8 @@
         :disabled="isDisabled"
         @change="handleChange"
       >
-    </span><span class="sd-radio__label">
+    </span>
+    <span class="sd-radio__label">
       <slot></slot>
       <template v-if="!$slots.default">{{label}}</template>
     </span>
@@ -30,7 +31,7 @@
 <script>
 export default {
   name: 'SdRadio',
-  componentName: '',
+  componentName: 'SdRadio',
   inject: {
     radioGroup: {
       default: null
@@ -68,10 +69,9 @@ export default {
   },
   methods: {
     handleChange () {
-      this.$nextTick(function () {
-        this.$emit('change', this.model);
-        this.radioGroup && this.radioGroup.$emit('change', this.model);
-      });
+      console.log('change');
+      this.$emit('change', this.model);
+      this.radioGroup && this.radioGroup.$emit('change', this.model);
     }
   }
 };
