@@ -59,11 +59,6 @@ export default {
       return this.model.indexOf(this.label) !== -1;
     }
   },
-  data () {
-    return {
-
-    };
-  },
   methods: {
     handleChange () {
       this.$emit('change', this.model);

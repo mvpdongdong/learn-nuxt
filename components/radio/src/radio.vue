@@ -62,14 +62,8 @@ export default {
       return this.label === this.model;
     }
   },
-  data () {
-    return {
-
-    };
-  },
   methods: {
     handleChange () {
-      console.log('change');
       this.$emit('change', this.model);
       this.radioGroup && this.radioGroup.$emit('change', this.model);
     }
