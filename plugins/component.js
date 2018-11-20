@@ -5,7 +5,7 @@ import Checkbox from '~/components/checkbox/index.js';
 import Switch from '~/components/switch/index.js';
 import RadioGroup from '~/components/radio/src/group';
 import CheckboxGroup from '~/components/checkbox/src/group';
-import {Select, Option} from '~/components/select';
+import { Select, Option } from '~/components/select';
 import Tabs from '~/components/tabs/tabs';
 import TabPane from '~/components/tabs/tab-pane';
 import Table from '~/components/table/table';

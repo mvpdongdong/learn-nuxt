@@ -15,7 +15,7 @@ if (!isServer) {
 
 export function on (target, event, handler, passive = false) {
   target.addEventListener(event, handler,
-    surportPassive ? {passive, capture: false} : false
+    surportPassive ? { passive, capture: false } : false
   );
 };
 
