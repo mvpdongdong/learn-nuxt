@@ -33,6 +33,9 @@
         </div>
       </sd-popup>
     </mu-card>
+    <mu-card class="user-card">
+      <button @click="showNotify">显示消息</button>
+    </mu-card>
   </section>
 </template>
 
@@ -65,6 +68,9 @@ export default {
           }
           break;
       }
+    },
+    showNotify () {
+      this.$notify('hello');
     }
   },
   layout: 'mobile'

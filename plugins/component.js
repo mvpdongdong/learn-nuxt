@@ -13,6 +13,7 @@ import Column from '~/components/table/column';
 import SwipeCell from '~/components/swipe-cell';
 import Popup from '~/components/popup';
 import clickoutside from '~/utils/clickoutside';
+import Notify from '~/components/notify';
 
 Vue.use(Radio);
 Vue.use(Checkbox);
@@ -29,3 +30,4 @@ Vue.component(Column.name, Column);
 Vue.component(SwipeCell.name, SwipeCell);
 Vue.component(Popup.name, Popup);
 Vue.prototype.$message = Message;
+Vue.prototype.$notify = Notify;
