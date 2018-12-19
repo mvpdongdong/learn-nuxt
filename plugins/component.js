@@ -11,6 +11,7 @@ import TabPane from '~/components/tabs/tab-pane';
 import Table from '~/components/table/table';
 import Column from '~/components/table/column';
 import SwipeCell from '~/components/swipe-cell';
+import Popup from '~/components/popup';
 import clickoutside from '~/utils/clickoutside';
 
 Vue.use(Radio);
@@ -26,4 +27,5 @@ Vue.component(TabPane.name, TabPane);
 Vue.component(Table.name, Table);
 Vue.component(Column.name, Column);
 Vue.component(SwipeCell.name, SwipeCell);
+Vue.component(Popup.name, Popup);
 Vue.prototype.$message = Message;

@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import touch from '~/utils/touch';
+import touch from '~/mixins/touch';
 
 const THRESHOLD = 0.15;
 export default {

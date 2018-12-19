@@ -85,3 +85,7 @@
 .muidocs-icon-custom-github:before {
 	content: "\e625";
 }
+
+.sd-overflow-hidden {
+  overflow: hidden;
+}
