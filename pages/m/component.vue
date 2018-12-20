@@ -37,7 +37,10 @@
       <sd-button @click="showNotify">显示消息</sd-button>
     </mu-card>
     <mu-card class="user-card">
-      <sd-slider/>
+      <div class="demo-container mb20">
+        <sd-slider class="mb30" v-model="sliderValue"/>
+        <sd-slider v-model="sliderValue2" bar-height="4px" :step="10"/>
+      </div>
     </mu-card>
   </section>
 </template>
@@ -54,7 +57,9 @@ export default {
       show: false,
       show2: false,
       show3: false,
-      show4: false
+      show4: false,
+      sliderValue: 30,
+      sliderValue2: 20
     };
   },
   methods: {
@@ -85,6 +90,15 @@ export default {
   padding: 0 20px;
   color: #fff;
   background-color: #F44;
+}
+.demo-container {
+  padding: 30px 0;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb30 {
+  margin-bottom: 30px;
 }
 </style>
 
