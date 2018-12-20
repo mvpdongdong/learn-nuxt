@@ -1,35 +1,25 @@
 <template>
-  <div class="sd-popup-component">
-    <transition :name="currentTransition">
-      <div
-        ref="popup"
-        v-show="value"
-        :class="[
-          'sd-popup',
-          {
-            [`sd-popup-${position}`]: this.position
-          }
-        ]">
-        <slot></slot>
-      </div>
-    </transition>
-    <transition name="sd-fade">
-      <div
-        @touchmove.prevent.stop
-        @click="close"
-        ref="overlay"
-        v-show="value"
-        class="sd-overlay"
-        >
-      </div>
-    </transition>
-  </div>
+  <transition :name="currentTransition">
+    <div
+      ref="popup"
+      v-show="value"
+      :class="[
+        'sd-popup',
+        {
+          [`sd-popup-${position}`]: this.position
+        }
+      ]">
+      <slot></slot>
+    </div>
+  </transition>
 </template>
 <script>
+import Vue from 'vue';
 import context from '~/mixins/popup/context';
 import touch from '~/mixins/touch';
 import scrollUtils from '~/utils/scroll';
 import { on, off } from '~/utils/event';
+import Overlay from './overlay';
 
 export default {
   name: 'SdPopup',
@@ -59,8 +49,7 @@ export default {
   },
   methods: {
     open () {
-      this.$refs.overlay.style.zIndex = context.zIndex++;
-      this.$refs.popup.style.zIndex = context.zIndex++;
+      this.renderOverlay();
       if (this.lockScroll) {
         on(document, 'touchstart', this.touchStart);
         on(document, 'touchmove', this.onTouchMove);
@@ -72,6 +61,7 @@ export default {
     },
     close () {
       this.$emit('input', false);
+      this.overlay.visible = false;
       if (this.lockScroll) {
         off(document, 'touchstart', this.touchStart);
         off(document, 'touchmove', this.onTouchMove);
@@ -104,6 +94,24 @@ export default {
         e.preventDefault();
         e.stopPropagation();
       }
+    },
+    renderOverlay () {
+      if (!this.overlay) {
+        this.overlay = new (Vue.extend(Overlay))({
+          el: document.createElement('div')
+        });
+        this.overlay.visible = true;
+        this.overlay.$on('click', () => {
+          this.close();
+        });
+        let target = this.$el.parentNode || document.body;
+        target.appendChild(this.overlay.$el);
+      }
+      this.overlay.visible = true;
+      this.$nextTick(() => {
+        this.overlay.zIndex = context.zIndex++;
+        this.$el.style.zIndex = context.zIndex++;
+      });
     }
   }
 };
@@ -138,18 +146,6 @@ export default {
 }
 .popup-slide-bottom-enter, .popup-slide-bottom-leave-to {
   transform: translate3d(-50%, 100%, 0);
-}
-.sd-overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transition: 0.3s ease-out;
-  background: rgba($color: #000, $alpha: 0.7)
-}
-.sd-fade-enter, .sd-fade-leave-to {
-  opacity: 0;
 }
 </style>
 

@@ -8,33 +8,36 @@
       </sd-swipe-cell>
     </mu-card>
     <mu-card class="user-card">
-      <button @click="show=true">底部弹出</button>
+      <sd-button @click="show=true">底部弹出</sd-button>
       <sd-popup v-model="show" position="bottom">
         <div style="height:300px;">
-          <button @click="show=false">取消</button>
+          <sd-button @click="show=false">取消</sd-button>
         </div>
       </sd-popup>
-      <button @click="show2=true">右侧弹出</button>
+      <sd-button @click="show2=true">右侧弹出</sd-button>
       <sd-popup v-model="show2" position="right">
         <div style="height:100px;">
-          <button @click="show2=false">取消</button>
-          <button @click="show3=true">右侧弹出</button>
+          <sd-button @click="show2=false">取消</sd-button>
+          <sd-button @click="show3=true">右侧弹出</sd-button>
           <sd-popup v-model="show3" position="right">
             <div style="height:300px;">
-              <button @click="show3=false">取消</button>
+              <sd-button @click="show3=false">取消</sd-button>
             </div>
           </sd-popup>
         </div>
       </sd-popup>
-      <button @click="show4=true">中间弹出</button>
+      <sd-button @click="show4=true">中间弹出</sd-button>
       <sd-popup v-model="show4">
         <div style="height:50px;width: 200px;">
-          <button @click="show4=false">取消</button>
+          <sd-button @click="show4=false">取消</sd-button>
         </div>
       </sd-popup>
     </mu-card>
     <mu-card class="user-card">
-      <button @click="showNotify">显示消息</button>
+      <sd-button @click="showNotify">显示消息</sd-button>
+    </mu-card>
+    <mu-card class="user-card">
+      <sd-slider/>
     </mu-card>
   </section>
 </template>
