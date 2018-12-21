@@ -1,6 +1,11 @@
 <template>
   <section class="container">
     <mu-card class="user-card">
+      <sd-pull-refresh style="height: 500px" v-model="isLoading" @refresh="onRefresh">
+        <p>刷新次数: {{ count }}</p>
+      </sd-pull-refresh>
+    </mu-card>
+    <mu-card class="user-card">
       <sd-swipe-cell :onClose="onClose">
         <div slot="left" class="btn-danger">确定</div>
         <div>单元格</div>
@@ -42,7 +47,7 @@
         <sd-slider v-model="sliderValue2" bar-height="4px" :step="10"/>
       </div>
     </mu-card>
-    <mu-card class="user-card scroller">
+    <!-- <mu-card class="user-card scroller">
       <sd-list
         v-model="loading"
         :finished="finished"
@@ -57,7 +62,7 @@
           </li>
         </ul>
       </sd-list>
-    </mu-card>
+    </mu-card> -->
   </section>
 </template>
 
@@ -78,7 +83,9 @@ export default {
       sliderValue2: 20,
       list: [],
       loading: false,
-      finished: false
+      finished: false,
+      isLoading: false,
+      count: 0
     };
   },
   methods: {
@@ -113,6 +120,12 @@ export default {
         if (this.list.length >= 80) {
           this.finished = true;
         }
+      }, 500);
+    },
+    onRefresh () {
+      setTimeout(() => {
+        this.isLoading = false;
+        this.count++;
       }, 500);
     }
   },
@@ -149,6 +162,9 @@ ul {
    height:400px;
    overflow: auto;
    -webkit-overflow-scrolling: touch;
+}
+.sd-pull-refresh__panel {
+  height: 100%;
 }
 </style>
 
