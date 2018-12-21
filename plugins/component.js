@@ -16,6 +16,7 @@ import clickoutside from '~/utils/clickoutside';
 import Notify from '~/components/notify';
 import Button from '~/components/button';
 import Slider from '~/components/slider';
+import List from '~/components/list';
 
 Vue.use(Radio);
 Vue.use(Checkbox);
@@ -33,5 +34,6 @@ Vue.component(Column.name, Column);
 Vue.component(SwipeCell.name, SwipeCell);
 Vue.component(Popup.name, Popup);
 Vue.component(Slider.name, Slider);
+Vue.component(List.name, List);
 Vue.prototype.$message = Message;
 Vue.prototype.$notify = Notify;

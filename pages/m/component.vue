@@ -1,5 +1,5 @@
 <template>
-  <section class="container" style="height: 1500px;">
+  <section class="container">
     <mu-card class="user-card">
       <sd-swipe-cell :onClose="onClose">
         <div slot="left" class="btn-danger">确定</div>
@@ -42,6 +42,22 @@
         <sd-slider v-model="sliderValue2" bar-height="4px" :step="10"/>
       </div>
     </mu-card>
+    <mu-card class="user-card scroller">
+      <sd-list
+        v-model="loading"
+        :finished="finished"
+        @load="onLoad"
+      >
+        <ul>
+          <li class="demo-list-li"
+            v-for="item in list"
+            :key="item"
+          >
+            {{item}}
+          </li>
+        </ul>
+      </sd-list>
+    </mu-card>
   </section>
 </template>
 
@@ -59,7 +75,10 @@ export default {
       show3: false,
       show4: false,
       sliderValue: 30,
-      sliderValue2: 20
+      sliderValue2: 20,
+      list: [],
+      loading: false,
+      finished: false
     };
   },
   methods: {
@@ -79,6 +98,22 @@ export default {
     },
     showNotify () {
       this.$notify('hello');
+    },
+    onLoad () {
+      // 异步更新数据
+      setTimeout(() => {
+        for (let i = 0; i < 10; i++) {
+          const text = this.list.length + 1;
+          this.list.push(text < 10 ? '0' + text : text);
+        }
+        // 加载状态结束
+        this.loading = false;
+
+        // 数据全部加载完成
+        if (this.list.length >= 80) {
+          this.finished = true;
+        }
+      }, 500);
     }
   },
   layout: 'mobile'
@@ -99,6 +134,21 @@ export default {
 }
 .mb30 {
   margin-bottom: 30px;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+.demo-list-li {
+  line-height: 30px;
+  list-style-type: none;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+}
+.scroller {
+   height:400px;
+   overflow: auto;
+   -webkit-overflow-scrolling: touch;
 }
 </style>
 
