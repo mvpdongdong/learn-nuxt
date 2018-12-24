@@ -12,8 +12,20 @@
       <slot></slot>
     </div>
     <slot name="indicator">
-      <div class="sd-swipe__indicators">
-
+      <div
+        v-if="showIndicators && count > 1"
+        class="sd-swipe__indicators">
+        <i
+          v-for="index in count"
+          :class="[
+            'sd-swipe__indicator',
+            {
+              'sd-swipe__indicator--active': index - 1 === activeIndicator
+            }
+          ]"
+          :style="indicatorStyle"
+        >
+        </i>
       </div>
     </slot>
   </div>
@@ -100,6 +112,11 @@ export default {
     isCorrectDirection () {
       const expect = this.vertical ? 'vertical' : 'horizontal';
       return this.direction === expect;
+    },
+    indicatorStyle () {
+      return {
+        background: this.indicatorColor
+      };
     }
   },
   watch: {
@@ -237,6 +254,27 @@ export default {
 .sd-swipe {
   position: relative;
   overflow: hidden;
+}
+.sd-swipe__indicators {
+  position: absolute;
+  display: flex;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sd-swipe__indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.3;
+  background: #ebedf0;
+  &:not(:last-child) {
+    margin-right: 6px;
+  }
+  &--active {
+    background: #1989fa;
+    opacity: 1;
+  }
 }
 </style>
 

@@ -64,7 +64,7 @@
       </sd-list>
     </mu-card> -->
     <mu-card class="user-card demo-swipe">
-      <sd-swipe @change="onSwipeChange">
+      <sd-swipe indicator-color="white" @change="onSwipeChange">
         <sd-swipe-item>1</sd-swipe-item>
         <sd-swipe-item>2</sd-swipe-item>
         <sd-swipe-item>3</sd-swipe-item>
