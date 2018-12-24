@@ -18,6 +18,8 @@ import Button from '~/components/button';
 import Slider from '~/components/slider';
 import List from '~/components/list';
 import PullRefresh from '~/components/pull-refresh';
+import Swipe from '~/components/swipe/swipe';
+import SwipeItem from '~/components/swipe/swipe-item';
 
 Vue.use(Radio);
 Vue.use(Checkbox);
@@ -37,5 +39,7 @@ Vue.component(Popup.name, Popup);
 Vue.component(Slider.name, Slider);
 Vue.component(List.name, List);
 Vue.component(PullRefresh.name, PullRefresh);
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 Vue.prototype.$message = Message;
 Vue.prototype.$notify = Notify;

@@ -63,6 +63,14 @@
         </ul>
       </sd-list>
     </mu-card> -->
+    <mu-card class="user-card demo-swipe">
+      <sd-swipe @change="onSwipeChange">
+        <sd-swipe-item>1</sd-swipe-item>
+        <sd-swipe-item>2</sd-swipe-item>
+        <sd-swipe-item>3</sd-swipe-item>
+        <sd-swipe-item>4</sd-swipe-item>
+      </sd-swipe>
+    </mu-card>
   </section>
 </template>
 
@@ -127,6 +135,9 @@ export default {
         this.isLoading = false;
         this.count++;
       }, 500);
+    },
+    onSwipeChange (index) {
+      console.log(index);
     }
   },
   layout: 'mobile'
@@ -165,6 +176,18 @@ ul {
 }
 .sd-pull-refresh__panel {
   height: 100%;
+}
+.demo-swipe .sd-swipe-item {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+}
+.demo-swipe .sd-swipe-item:nth-child(odd) {
+    background-color: #66c6f2;
+}
+.demo-swipe .sd-swipe-item:nth-child(even) {
+    background-color: #39a9ed;
 }
 </style>
 
