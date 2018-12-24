@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <mu-card class="user-card">
-      <sd-pull-refresh style="height: 500px" v-model="isLoading" @refresh="onRefresh">
+      <sd-pull-refresh style="height: 200px" v-model="isLoading" @refresh="onRefresh">
         <p>刷新次数: {{ count }}</p>
       </sd-pull-refresh>
     </mu-card>
@@ -64,7 +64,15 @@
       </sd-list>
     </mu-card> -->
     <mu-card class="user-card demo-swipe">
-      <sd-swipe indicator-color="white" @change="onSwipeChange">
+      <sd-swipe class="demo-swipe--vertical" indicator-color="white" @change="onSwipeChange">
+        <sd-swipe-item>1</sd-swipe-item>
+        <sd-swipe-item>2</sd-swipe-item>
+        <sd-swipe-item>3</sd-swipe-item>
+        <sd-swipe-item>4</sd-swipe-item>
+      </sd-swipe>
+    </mu-card>
+    <mu-card class="user-card demo-swipe">
+      <sd-swipe class="demo-swipe--vertical" vertical indicator-color="white" @change="onSwipeChange">
         <sd-swipe-item>1</sd-swipe-item>
         <sd-swipe-item>2</sd-swipe-item>
         <sd-swipe-item>3</sd-swipe-item>
@@ -176,6 +184,9 @@ ul {
 }
 .sd-pull-refresh__panel {
   height: 100%;
+}
+.demo-swipe--vertical {
+    height: 150px;
 }
 .demo-swipe .sd-swipe-item {
     color: #fff;

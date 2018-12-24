@@ -14,7 +14,12 @@
     <slot name="indicator">
       <div
         v-if="showIndicators && count > 1"
-        class="sd-swipe__indicators">
+        :class="[
+          'sd-swipe__indicators',
+          {
+            'sd-swipe__indicators--vertical': vertical
+          }
+        ]">
         <i
           v-for="index in count"
           :class="[
@@ -155,8 +160,8 @@ export default {
       const el = this.$el;
       if (el) {
         const rect = el.getBoundingClientRect();
-        this.computedWidth = rect.width || this.width;
-        this.computedHeight = rect.height || this.height;
+        this.computedWidth = this.width || rect.width;
+        this.computedHeight = this.height || rect.height;
       }
       this.swiping = true;
       this.active = active;
@@ -261,6 +266,18 @@ export default {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
+  &--vertical {
+    flex-direction: column;
+    left: 10px;
+    bottom: 50%;
+    transform: translate(0, 50%);
+    .sd-swipe__indicator {
+      &:not(:last-child) {
+        margin-bottom: 6px;
+        margin-right: 0;
+      }
+    }
+  }
 }
 .sd-swipe__indicator {
   width: 6px;
