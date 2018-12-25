@@ -20,6 +20,7 @@ import List from '~/components/list';
 import PullRefresh from '~/components/pull-refresh';
 import Swipe from '~/components/swipe/swipe';
 import SwipeItem from '~/components/swipe/swipe-item';
+import Pagination from '~/components/pagination';
 
 Vue.use(Radio);
 Vue.use(Checkbox);
@@ -41,5 +42,6 @@ Vue.component(List.name, List);
 Vue.component(PullRefresh.name, PullRefresh);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Pagination.name, Pagination);
 Vue.prototype.$message = Message;
 Vue.prototype.$notify = Notify;

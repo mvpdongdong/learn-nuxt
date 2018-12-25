@@ -72,12 +72,31 @@
       </sd-swipe>
     </mu-card>
     <mu-card class="user-card demo-swipe">
-      <sd-swipe class="demo-swipe--vertical" vertical indicator-color="white" @change="onSwipeChange">
+      <sd-swipe class="demo-swipe--vertical" vertical indicator-color="white">
         <sd-swipe-item>1</sd-swipe-item>
         <sd-swipe-item>2</sd-swipe-item>
         <sd-swipe-item>3</sd-swipe-item>
         <sd-swipe-item>4</sd-swipe-item>
       </sd-swipe>
+    </mu-card>
+    <mu-card class="user-card">
+      <sd-pagination
+        v-model="currentPage1"
+        force-ellipses
+        :show-page-size="3"
+        :total-items="40"
+        :items-per-page="5"
+        @change="onPageChange"
+      />
+    </mu-card>
+    <mu-card class="user-card">
+      <sd-pagination
+        v-model="currentPage2"
+        mode="simple"
+        :total-items="40"
+        :items-per-page="5"
+        @change="onPageChange"
+      />
     </mu-card>
   </section>
 </template>
@@ -101,7 +120,9 @@ export default {
       loading: false,
       finished: false,
       isLoading: false,
-      count: 0
+      count: 0,
+      currentPage1: 1,
+      currentPage2: 1
     };
   },
   methods: {
@@ -146,6 +167,9 @@ export default {
     },
     onSwipeChange (index) {
       console.log(index);
+    },
+    onPageChange (page) {
+      console.log('page:', page);
     }
   },
   layout: 'mobile'
