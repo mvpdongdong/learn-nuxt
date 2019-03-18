@@ -208,8 +208,8 @@ export default {
       if (autoplay && count > 1) {
         this.clear();
         this.timer = setTimeout(() => {
-          this.swiping = true;
-          this.correctPosition();
+          this.swiping = true; // 去除动画duration-time，以便瞬间到达修正位置
+          this.correctPosition();// loop时修正位置，回到第一个item或最后一个item
 
           setTimeout(() => {
             this.swiping = false;
@@ -243,6 +243,7 @@ export default {
         return;
       }
 
+      // loop过程中，在swap-item最后一个或第一个时，改变swap-item位置，其它情况位置是0
       swipes[0] && (swipes[0].offset = atLast && (delta < 0 || move > 0) > 0 ? trackSize : 0);
       swipes[count - 1] && (swipes[count - 1].offset = atFirst && (delta > 0 || move < 0) ? -trackSize : 0);
 
